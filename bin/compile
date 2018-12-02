@@ -25,7 +25,7 @@ ENV_DIR=$3
 mkdir -p "$1" "$2"
 build=$(cd "$1/" && pwd)
 cache=$(cd "$2/" && pwd)
-GITHUB_TOKEN = $(cat "$ENV_DIR/GITHUB_TOKEN")
+GITHUB_TOKEN=$(cat "$ENV_DIR/GITHUB_TOKEN")
 
 echo "-----> Starting nbextension step..."
 
