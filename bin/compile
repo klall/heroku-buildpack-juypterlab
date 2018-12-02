@@ -11,7 +11,7 @@ indent() {
 echo "-----> Retrieve environment variables"
 
 
-# BUILD_DIR=$1
+BUILD_DIR=$1
 # CACHE_DIR=$2
 ENV_DIR=$3
 
@@ -21,13 +21,22 @@ ENV_DIR=$3
 # [ -z "$ENVIRONMENT_YML" ] || echo "ENVIRONMENT_YML: $ENVIRONMENT_YML"
 # [ -z "$ADDITIONAL_ENVIRONMENT_YML" ] || echo "ADDITIONAL_ENVIRONMENT_YML: $ADDITIONAL_ENVIRONMENT_YML"
 
-echo "-----> Starting compile step..."
+
 mkdir -p "$1" "$2"
 build=$(cd "$1/" && pwd)
 cache=$(cd "$2/" && pwd)
 
-echo "-----> Cache dir: $cache"
-echo "-----> Build dir: $build"
+echo "-----> Starting nbextension step..."
+
+cd $build
+jupyter contrib nbextension install --user
+jupyter labextension install @jupyterlab/git
+jupyter serverextension enable --py jupyterlab_git
+
+echo "-----> setting up git ..."
+mkdir -p "$build/notebooks"
+cd $build/notebooks
+git init
 
 echo $(ls $ENV_DIR)
 echo "------> Trying to print APP_TYPE  from env_dir"

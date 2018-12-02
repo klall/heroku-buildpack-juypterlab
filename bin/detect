@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 BUILD_DIR=$1
-echo "-----> Detecting Jupyter Labl $(ls $BUILD_DIR)"
+echo "-----> Detecting Jupyter Lab"
 
 if [ -f "$BUILD_DIR/apiv2/ipython_config.json" ]; then
-  echo "-----> File detected: $BUILD_DIR/apiv2/ipython_config.json"
+  echo "-----> Jupyter Config detected: $BUILD_DIR/apiv2/ipython_config.json"
+  exit 0
 fi
-
-exit 0
+exit 1
