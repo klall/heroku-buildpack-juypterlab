@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
 BUILD_DIR=$1
+echo "build dir"
+echo "$(ls $BUILD_DIR)"
+echo "$(ls $BUILD_DIR/apiv2)"
+echo "$(cat $BUILD_DIR/apiv2/ipython_config.json)"
 
 if [ ! -f "$BUILD_DIR/apiv2/ipython_config.json" ]; then
   echo "Building Jupyter"
