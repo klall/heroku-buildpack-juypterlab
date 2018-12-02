@@ -25,6 +25,7 @@ ENV_DIR=$3
 mkdir -p "$1" "$2"
 build=$(cd "$1/" && pwd)
 cache=$(cd "$2/" && pwd)
+GITHUB_TOKEN = $(cat "$ENV_DIR/GITHUB_TOKEN")
 
 echo "-----> Starting nbextension step..."
 
@@ -33,15 +34,16 @@ jupyter contrib nbextension install --user
 jupyter labextension install @jupyterlab/git
 jupyter serverextension enable --py jupyterlab_git
 
+echo "------> Trying to print GITHUB_TOKEN  from env_dir"
+echo $GITHUB_TOKEN | indent
+
 echo "-----> setting up git ..."
 mkdir -p "$build/notebooks"
 cd $build/notebooks
 git init
-
-echo $(ls $ENV_DIR)
-echo "------> Trying to print APP_TYPE  from env_dir"
-echo $(cat "$ENV_DIR/APP_TYPE") | indent
-
+git remote add origin https://aiisahik:$GITHUB_TOKEN@github.com/aiisahik/gourmet-notebooks.git
+git pull origin master 
+echo $(ls $build/notebooks -l)
 echo "-----> Finished compile step"
 
 echo "-----> Create .profile.d"
