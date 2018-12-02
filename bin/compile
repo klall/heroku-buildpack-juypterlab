@@ -9,9 +9,11 @@ indent() {
 
 
 echo "-----> Retrieve environment variables"
+
+
 # BUILD_DIR=$1
 # CACHE_DIR=$2
-# ENV_DIR=$3
+ENV_DIR=$3
 
 # for KEY in ENVIRONMENT_YML ADDITIONAL_ENVIRONMENT_YML; do
 #   [ -f $ENV_DIR/$KEY ] && export "$KEY=$(cat $ENV_DIR/$KEY)" 
@@ -26,8 +28,10 @@ cache=$(cd "$2/" && pwd)
 
 echo "-----> Cache dir: $cache"
 echo "-----> Build dir: $build"
-echo "-----> APP_TYPE: $APP_TYPE"
 
+echo $(ls $ENV_DIR)
+echo "------> Trying to print APP_TYPE  from env_dir"
+echo $(cat "$ENV_DIR/APP_TYPE") | indent
 
 echo "-----> Finished compile step"
 
