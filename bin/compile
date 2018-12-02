@@ -30,8 +30,8 @@ GITHUB_TOKEN=$(cat "$ENV_DIR/GITHUB_TOKEN")
 echo "-----> Starting nbextension step..."
 
 cd $build
-jupyter contrib nbextension install --system
-jupyter nbextensions_configurator enable --system
+jupyter contrib nbextension install --user
+jupyter nbextensions_configurator enable --user
 jupyter labextension install @jupyterlab/git
 jupyter serverextension enable --py jupyterlab_git
 
