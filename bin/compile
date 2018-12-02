@@ -41,6 +41,8 @@ echo $GITHUB_TOKEN | indent
 echo "-----> setting up git ..."
 mkdir -p "$build/notebooks"
 cd $build/notebooks
+git config --global user.email "jie.z.zhou@gmail.com"
+git config --global user.name "aiisahik"
 git init
 git remote add origin https://aiisahik:$GITHUB_TOKEN@github.com/aiisahik/gourmet-notebooks.git
 git pull origin master 
