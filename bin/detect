@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
 BUILD_DIR=$1
+echo "Detecting app_type $APP_TYPE"
+echo $(ls $ENV_DIR)
+echo "Trying to print APP_TYPE  from env_dir"
+echo  $(cat "$ENV_DIR/APP_TYPE")
 
 if [ "$APP_TYPE" = "NOTEBOOK" ]; then
   echo "Building Jupyter"
