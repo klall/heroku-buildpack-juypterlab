@@ -19,9 +19,16 @@ mkdir -p "$1" "$2"
 build=$(cd "$1/" && pwd)
 cache=$(cd "$2/" && pwd)
 
-echo "-----> Starting nbextension step..."
 
 cd $build
+echo "-----> Adding jupyterlab-dash ..."
+git clone https://github.com/plotly/jupyterlab-dash
+cd jupyterlab-dash
+npm install
+npm run build
+jupyter labextension link .
+cd .. 
+echo "-----> Starting nbextension step..."
 jupyter contrib nbextension install --user
 jupyter nbextensions_configurator enable --user
 jupyter labextension install @jupyterlab/git
