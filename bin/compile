@@ -21,6 +21,9 @@ cache=$(cd "$2/" && pwd)
 
 
 cd $build
+echo "-----> Installing Additional Notebooks Requirements ..."
+pip install -r requirements.notebook.txt
+
 echo "-----> Adding jupyterlab-dash ..."
 git clone https://github.com/plotly/jupyterlab-dash
 cd jupyterlab-dash
@@ -38,16 +41,16 @@ jupyter serverextension enable --py jupyterlab_git
 # echo $GITHUB_TOKEN | indent
 
 
-if [ -f "$ENV_DIR/GITHUB_URL" ]; then
-  echo "-----> GITHUB_URL detected. Setting up GIT ..."
-  GITHUB_URL=$(cat "$ENV_DIR/GITHUB_URL")
-  mkdir -p "$build/notebooks"
-  cd $build/notebooks
-  git init
-  git remote add origin $GITHUB_URL
-  git pull origin master
-  echo "-----> Finished setting up git"
-fi
+# if [ -f "$ENV_DIR/GITHUB_URL" ]; then
+#   echo "-----> GITHUB_URL detected. Setting up GIT ..."
+#   GITHUB_URL=$(cat "$ENV_DIR/GITHUB_URL")
+#   mkdir -p "$build/notebooks"
+#   cd $build/notebooks
+#   git init
+#   git remote add origin $GITHUB_URL
+#   git pull origin master
+#   echo "-----> Finished setting up git"
+# fi
 
 echo "-----> Purging cache"
 rm -rf $cache/*
