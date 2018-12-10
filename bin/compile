@@ -37,20 +37,9 @@ jupyter nbextensions_configurator enable --user
 jupyter labextension install @jupyterlab/git
 jupyter serverextension enable --py jupyterlab_git
 
-# echo "------> Trying to print GITHUB_TOKEN  from env_dir"
-# echo $GITHUB_TOKEN | indent
+# echo "-----> Creating directory $build/notebooks ..."
+# mkdir -p "$build/notebooks"
 
-
-# if [ -f "$ENV_DIR/GITHUB_URL" ]; then
-#   echo "-----> GITHUB_URL detected. Setting up GIT ..."
-#   GITHUB_URL=$(cat "$ENV_DIR/GITHUB_URL")
-#   mkdir -p "$build/notebooks"
-#   cd $build/notebooks
-#   git init
-#   git remote add origin $GITHUB_URL
-#   git pull origin master
-#   echo "-----> Finished setting up git"
-# fi
 
 echo "-----> Purging cache"
 rm -rf $cache/*
