@@ -41,5 +41,5 @@ jupyter serverextension enable --py jupyterlab_git
 # mkdir -p "$build/notebooks"
 
 
-echo "-----> Purging cache"
-rm -rf $cache/*
+echo "-----> Not purging cache"
+# rm -rf $cache/*
