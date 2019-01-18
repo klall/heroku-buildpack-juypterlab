@@ -38,8 +38,9 @@ jupyter labextension install @jupyterlab/git --no-build
 jupyter serverextension enable --py jupyterlab_git
 
 # jupyter dashboards extension
-jupyter nbextension install --py jupyter_dashboards --sys-prefix
-jupyter nbextension enable --py jupyter_dashboards --sys-prefix
+# disabled since it does not work so well
+# jupyter nbextension install --py jupyter_dashboards --sys-prefix
+# jupyter nbextension enable --py jupyter_dashboards --sys-prefix
 
 jupyter lab build
 
