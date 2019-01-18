@@ -27,7 +27,7 @@ git clone https://github.com/plotly/jupyterlab-dash
 cd jupyterlab-dash
 npm install
 # npm run build
-jupyter labextension link .
+jupyter labextension link . --no-build
 cd .. 
 echo "-----> Starting nbextension step..."
 jupyter contrib nbextension install --user
