@@ -62,5 +62,5 @@ jupyter lab build
 # echo "-----> Creating directory $build/notebooks ..."
 # mkdir -p "$build/notebooks"
 
-echo "-----> Not purging cache"
-# rm -rf $cache/*
+echo "-----> Purging cache"
+rm -rf $cache/*
