@@ -21,12 +21,15 @@ cache=$(cd "$2/" && pwd)
 
 
 cd $build
+echo "-----> Installing Additional Notebooks Requirements ..."
+pip install -r requirements.notebook.txt
 
 echo "-----> Adding jupyterlab-dash ..."
 git clone https://github.com/plotly/jupyterlab-dash
 cd jupyterlab-dash
 npm install
-# npm run build
+npm run build
+
 jupyter labextension link . --no-build
 cd .. 
 echo "-----> Starting nbextension step..."
